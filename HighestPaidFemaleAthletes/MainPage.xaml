@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
+             xmlns:local="clr-namespace:HighestPaidFemaleAthletes"
+             x:Class="HighestPaidFemaleAthletes.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:TopPaidFemaleAthleteInfo x:Name="viewModel"/>
+    </ContentPage.BindingContext>
+
+    <Border StrokeThickness="4" Margin="20">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="10" />
+        </Border.StrokeShape>
+        <chart:SfCartesianChart IsTransposed="True" Background="#262161">
+
+            <chart:SfCartesianChart.Title>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="{OnPlatform Android=49*,WinUI=59*,MacCatalyst=59*,iOS=49*}"/>
+                    </Grid.ColumnDefinitions>
+                    <VerticalStackLayout Background="#A37CF8" Margin="10,5,0,15" Grid.Column="0" Grid.RowSpan="2"/>
+                    <VerticalStackLayout Grid.Column="1" Margin="5">
+                        <Label Text="Top Female Athletes in the World by Income, 2023" FontSize="Subtitle" FontFamily="centurygothic" Padding="0,0,5,5" HorizontalTextAlignment="Start" FontAttributes="Bold" TextColor="White"/>
+                        <Label Text="The highest paid female athletes in terms of total earnings in 2023" HorizontalTextAlignment="Start" FontSize="{OnPlatform Android=10,WinUI=10,MacCatalyst=16,iOS=11}" FontFamily="centurygothic" TextColor="White" Padding="0,0,0,10"/>
+                    </VerticalStackLayout>
+                </Grid>
+            </chart:SfCartesianChart.Title>
+
+            <chart:SfCartesianChart.Legend>
+                <chart:ChartLegend Placement="Bottom">
+                    <chart:ChartLegend.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal" Margin="5">
+                                <Rectangle HeightRequest="15" WidthRequest="15" Margin="3" Background="{Binding IconBrush}"/>
+                                <Label Text="{Binding Text}" Margin="3" TextColor="White" FontSize="12"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </chart:ChartLegend.ItemTemplate>
+                </chart:ChartLegend>
+            </chart:SfCartesianChart.Legend>
+
+            <chart:SfCartesianChart.XAxes>
+                <local:CategoryAxisExt ShowMajorGridLines="False" LabelPlacement="BetweenTicks" EdgeLabelsDrawingMode="{OnPlatform Android=Center}">
+                    <local:CategoryAxisExt.AxisLineStyle>
+                        <chart:ChartLineStyle Stroke="Black" StrokeWidth="0"/>
+                    </local:CategoryAxisExt.AxisLineStyle>
+                    <local:CategoryAxisExt.MajorTickStyle>
+                        <chart:ChartAxisTickStyle StrokeWidth="0"/>
+                    </local:CategoryAxisExt.MajorTickStyle>
+                    <local:CategoryAxisExt.LabelStyle>
+                        <chart:ChartAxisLabelStyle TextColor="white" FontAttributes="Bold" LabelAlignment="Center" Margin="{OnPlatform WinUI='40,4,4,4',Android='20,4,4,4'}" FontSize="10"/>
+                    </local:CategoryAxisExt.LabelStyle>
+                </local:CategoryAxisExt>
+            </chart:SfCartesianChart.XAxes>
+
+            <chart:SfCartesianChart.YAxes>
+                <chart:NumericalAxis Interval="5" Maximum="26" EdgeLabelsDrawingMode="Center"  ShowMajorGridLines="False">
+                    <chart:NumericalAxis.AxisLineStyle>
+                        <chart:ChartLineStyle StrokeWidth="0"/>
+                    </chart:NumericalAxis.AxisLineStyle>
+                    <chart:NumericalAxis.MajorTickStyle>
+                        <chart:ChartAxisTickStyle StrokeWidth="0"/>
+                    </chart:NumericalAxis.MajorTickStyle>
+                    <chart:NumericalAxis.LabelStyle>
+                        <chart:ChartAxisLabelStyle LabelFormat="$0M" TextColor="White" FontAttributes="Bold" FontSize="10"/>
+                    </chart:NumericalAxis.LabelStyle>
+                    <chart:NumericalAxis.MajorGridLineStyle>
+                        <chart:ChartLineStyle Stroke="Beige"/>
+                    </chart:NumericalAxis.MajorGridLineStyle>
+                </chart:NumericalAxis>
+            </chart:SfCartesianChart.YAxes>
+
+            <!--On-Field Earning Series-->
+            <chart:StackingColumnSeries ItemsSource="{Binding AthletesData}" XBindingPath="AthleteName" YBindingPath="OnFieldEarning" Fill="#EF3F37" Label="On-Field Earnings" ShowDataLabels="True">
+                <chart:StackingColumnSeries.DataLabelSettings>
+                    <chart:CartesianDataLabelSettings LabelPlacement="Outer">
+                        <chart:CartesianDataLabelSettings.LabelStyle>
+                            <chart:ChartDataLabelStyle FontAttributes="Bold" LabelFormat="$0.#M" FontSize="{OnPlatform Android=10}"/>
+                        </chart:CartesianDataLabelSettings.LabelStyle>
+                    </chart:CartesianDataLabelSettings>
+                </chart:StackingColumnSeries.DataLabelSettings>
+            </chart:StackingColumnSeries>
+
+            <!--Off-Filed Earning Series-->
+            <chart:StackingColumnSeries ItemsSource="{Binding AthletesData}" XBindingPath="AthleteName" YBindingPath="OffFieldEarning" Fill="#FBAF41" Label="Off-Field Earnings" ShowDataLabels="True">
+                <chart:StackingColumnSeries.DataLabelSettings>
+                    <chart:CartesianDataLabelSettings LabelPlacement="Outer">
+                        <chart:CartesianDataLabelSettings.LabelStyle>
+                            <chart:ChartDataLabelStyle FontAttributes="Bold" LabelFormat="$0.#M" FontSize="{OnPlatform Android=10}"/>
+                        </chart:CartesianDataLabelSettings.LabelStyle>
+                    </chart:CartesianDataLabelSettings>
+                </chart:StackingColumnSeries.DataLabelSettings>
+            </chart:StackingColumnSeries>
+
+        </chart:SfCartesianChart>
+    </Border>
+    
+</ContentPage>
