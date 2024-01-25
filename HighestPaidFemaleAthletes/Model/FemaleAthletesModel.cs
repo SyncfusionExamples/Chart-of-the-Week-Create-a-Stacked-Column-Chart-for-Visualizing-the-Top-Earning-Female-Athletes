@@ -9,10 +9,12 @@ namespace HighestPaidFemaleAthletes
 {
     public class FemaleAthletesModel
     {
-        public string? AthleteName { get; set; }
+        public string AthleteName { get; set; } = string.Empty;
 
         public double OnFieldEarning { get; set; }
 
         public double OffFieldEarning { get; set; }
+
+        public string Country { get; set; } = string.Empty;
     }
 }

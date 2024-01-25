@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Reflection;
 using Microsoft.Maui.Graphics.Platform;
+using Microsoft.Maui.Controls.PlatformConfiguration;
 
 namespace HighestPaidFemaleAthletes
 {
@@ -15,45 +16,23 @@ namespace HighestPaidFemaleAthletes
 
     public class CategoryAxisExt : CategoryAxis
     {
-        Stream? stream = null;
+        float xOffset = (Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.Android || Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.iOS) ? 85 : 90;
+        float yOffset = (Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.Android || Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.iOS) ? 8 : 13;
+
         protected override void DrawAxis(ICanvas canvas, Rect arrangeRect)
         {
             base.DrawAxis(canvas, arrangeRect);
 
-            Assembly assembly = typeof(MainPage).GetTypeInfo().Assembly;
-
-            if (assembly != null)
+            foreach (ChartAxisLabel label in VisibleLabels)
             {
-                if(this.BindingContext is TopPaidFemaleAthleteInfo viewModel)
+                string? labelText = label.Content.ToString();
+
+                if (this.BindingContext is TopPaidFemaleAthleteInfo viewModel && labelText != null && viewModel.Streams.ContainsKey(labelText))
                 {
-                    for (int i = 0; i < VisibleLabels.Count; i++)
-                    {
-                        if (viewModel.Streams.Count <= VisibleLabels.Count)
-                        {
-                            string imageName = $"flag{i}.png";
-                            stream = assembly.GetManifestResourceStream($"HighestPaidFemaleAthletes.Resources.Images.{imageName}");
-                            if (stream != null)
-                            {
-                                viewModel.Streams.Add(stream);
-                            }
-                        }
-                        else
-                        {
-                            stream = viewModel.Streams[i];
-                        }
-
-                        if (stream != null)
-                        {
-                            var image = PlatformImage.FromStream(stream);
-                            var top = ValueToPoint(VisibleLabels[i].Position); // Assuming positions start from 0
-#if ANDROID || IOS
-                            canvas.DrawImage(image, (float)arrangeRect.Left + 85, top - 8, 15, 15);
-#elif WINDOWS || MACCATALYST
-                            canvas.DrawImage(image, (float)arrangeRect.Left + 90, top -13, 25, 25);
-#endif
-                        }
-
-                    }
+                    Stream stream = viewModel.Streams[labelText];
+                    var image = PlatformImage.FromStream(stream);
+                    var top = ValueToPoint(label.Position); // Assuming positions start from 0
+                    canvas.DrawImage(image, (float)arrangeRect.Left + xOffset, top - yOffset, 25, 25);
                 }
             }
         }

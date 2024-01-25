@@ -57,18 +57,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<EmbeddedResource Include="Resources\Images\flag9.png" />
-		<EmbeddedResource Include="Resources\Images\china1.png" />
-		<EmbeddedResource Include="Resources\Images\flag8.png" />
+		<EmbeddedResource Include="Resources\Images\poland.png" />
+		<EmbeddedResource Include="Resources\Images\china.png" />
 		<EmbeddedResource Include="Resources\Images\flag7.png" />
-		<EmbeddedResource Include="Resources\Images\flag6.png" />
-		<EmbeddedResource Include="Resources\Images\flag4.png" />
+		<EmbeddedResource Include="Resources\Images\united_kingdom.png" />
+		<EmbeddedResource Include="Resources\Images\belarus.png" />
 		<EmbeddedResource Include="Resources\Images\flag3.png" />
-		<EmbeddedResource Include="Resources\Images\flag2.png" />
-		<EmbeddedResource Include="Resources\Images\flag1.png" />
-		<EmbeddedResource Include="Resources\Images\flag0.png" />
-		<EmbeddedResource Include="Resources\Images\flag5.png" />
-		<EmbeddedResource Include="Resources\Images\flag.png" />
+		<EmbeddedResource Include="Resources\Images\united_states.png" />
+		<EmbeddedResource Include="Resources\Images\kazakhstan.png" />
+		<EmbeddedResource Include="Resources\Images\canada.png" />
+		<EmbeddedResource Include="Resources\Images\japan.png" />
 	</ItemGroup>
 
 	<ItemGroup>
