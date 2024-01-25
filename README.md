@@ -4,7 +4,7 @@ This article in the Syncfusion Blog explains The heighest paid female athletes i
 A stacked bar chart visually represents different categories, with bars divided into segments corresponding to subcategories or components. These subcategories are stacked, offering a snapshot of the total value and its distribution. Stacked bar charts are effective for displaying category size and the contribution of each subcategory.
 To render a Stacked Bar Chart, create an instance of [StackedColumnSeries](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Charts.StackingColumnSeries.html), and add it to the [Series](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Charts.SfCartesianChart.html#Syncfusion_Maui_Charts_SfCartesianChart_Series) collection property of [SfCartesianChart](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Charts.SfCartesianChart.html?tabs=tabid-1). Then transpose the chart, by setting true to [IsTransposed](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Charts.SfCartesianChart.html#Syncfusion_Maui_Charts_SfCartesianChart_IsTransposed) property in [SfCartesianChart](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Charts.SfCartesianChart.html?tabs=tabid-1).
 
-![image](https://github.com/SyncfusionExamples/Top-Female-Athletes-in-the-World-by-Income-in-2023/assets/126753532/f13d4572-1697-47b3-ae7f-e6cfdccf059e)
+![image](https://github.com/SyncfusionExamples/Top-Female-Athletes-in-the-World-by-Income-in-2023/assets/126753532/ee7f6d1b-5f89-467f-9aa3-3bd988c2f009)
 
 ### Customizing the chart appearence
 In this example, we have enhanced the appearence of our Bubble chart by customizing various elements, such as appearence of the axis elements, tooltip and title.
