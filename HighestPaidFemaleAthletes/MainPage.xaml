@@ -55,7 +55,7 @@
                         <chart:ChartAxisTickStyle StrokeWidth="0"/>
                     </local:CategoryAxisExt.MajorTickStyle>
                     <local:CategoryAxisExt.LabelStyle>
-                        <chart:ChartAxisLabelStyle TextColor="white" FontAttributes="Bold" LabelAlignment="Center" Margin="{OnPlatform WinUI='40,4,4,4',Android='20,4,4,4'}" FontSize="10"/>
+                        <chart:ChartAxisLabelStyle TextColor="white" FontAttributes="Bold" LabelAlignment="Center" Margin="{OnPlatform WinUI='40,4,4,4',Android='20,4,4,4',MacCatalyst='40,4,4,4',iOS='30,4,4,4'}" FontSize="10"/>
                     </local:CategoryAxisExt.LabelStyle>
                 </local:CategoryAxisExt>
             </chart:SfCartesianChart.XAxes>
