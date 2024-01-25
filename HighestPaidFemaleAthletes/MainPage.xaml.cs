@@ -18,6 +18,8 @@ namespace HighestPaidFemaleAthletes
     {
         float xOffset = (Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.Android || Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.iOS) ? 85 : 90;
         float yOffset = (Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.Android || Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.iOS) ? 8 : 13;
+        float width = (Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.Android || Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.iOS) ? 15 : 25;
+        float height = (Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.Android || Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.iOS) ? 15 : 25;
 
         protected override void DrawAxis(ICanvas canvas, Rect arrangeRect)
         {
@@ -32,7 +34,7 @@ namespace HighestPaidFemaleAthletes
                     Stream stream = viewModel.Streams[labelText];
                     var image = PlatformImage.FromStream(stream);
                     var top = ValueToPoint(label.Position); // Assuming positions start from 0
-                    canvas.DrawImage(image, (float)arrangeRect.Left + xOffset, top - yOffset, 25, 25);
+                    canvas.DrawImage(image, (float)arrangeRect.Left + xOffset, top - yOffset, width, height);
                 }
             }
         }
