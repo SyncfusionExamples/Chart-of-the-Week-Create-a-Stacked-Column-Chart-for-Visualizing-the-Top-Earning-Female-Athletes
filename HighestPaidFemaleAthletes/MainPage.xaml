@@ -47,7 +47,7 @@
             </chart:SfCartesianChart.Legend>
 
             <chart:SfCartesianChart.XAxes>
-                <local:CategoryAxisExt ShowMajorGridLines="False" LabelPlacement="BetweenTicks" EdgeLabelsDrawingMode="{OnPlatform Android=Center,iOS=Center}" AutoScrollingMode="{OnPlatform Android=Start,iOS=Start}" AutoScrollingDelta="{OnPlatform Android=5,iOS=5}">
+                <local:CategoryAxisExt ShowMajorGridLines="False" LabelPlacement="BetweenTicks" EdgeLabelsDrawingMode="{OnPlatform Android=Center,iOS=Center}" AutoScrollingMode="{OnPlatform Android=End,iOS=End}" AutoScrollingDelta="{OnPlatform Android=5,iOS=5}">
                     <local:CategoryAxisExt.AxisLineStyle>
                         <chart:ChartLineStyle Stroke="Black" StrokeWidth="0"/>
                     </local:CategoryAxisExt.AxisLineStyle>

@@ -1,8 +1,5 @@
 ﻿using Syncfusion.Maui.Charts;
-using System.Globalization;
-using System.Reflection;
 using Microsoft.Maui.Graphics.Platform;
-using Microsoft.Maui.Controls.PlatformConfiguration;
 
 namespace HighestPaidFemaleAthletes
 {
@@ -16,10 +13,47 @@ namespace HighestPaidFemaleAthletes
 
     public class CategoryAxisExt : CategoryAxis
     {
-        float xOffset = Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.Android ? 85 : Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.WinUI ? 90 : Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.iOS ? 95 : 100;
-        float yOffset = Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.Android ? 8 : Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.WinUI ? 13 : Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.iOS ? 10 : 15;
-        float width = Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.Android ? 15 : Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.WinUI ? 25 : Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.iOS ? 20 : 30;
-        float height = Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.Android ? 15 : Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.WinUI ? 25 : Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.iOS ? 20 : 30;
+        public float XOffset { get; private set; }
+        public float YOffset { get; private set; }
+        public float Width { get; private set; }
+        public float Height { get; private set; }
+
+        public CategoryAxisExt()
+        {
+            SetPlatformValues();
+        }
+
+        private void SetPlatformValues()
+        {
+            if (Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.Android)
+            {
+                XOffset = 85;
+                YOffset = 8;
+                Width = 15;
+                Height = 15;
+            }
+            else if (Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.WinUI)
+            {
+                XOffset = 90;
+                YOffset = 13;
+                Width = 25;
+                Height = 25;
+            }
+            else if (Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.iOS)
+            {
+                XOffset = 95;
+                YOffset = 10;
+                Width = 20;
+                Height = 20;
+            }
+            else
+            {
+                XOffset = 100;
+                YOffset = 15;
+                Width = 30;
+                Height = 30;
+            }
+        }
 
         protected override void DrawAxis(ICanvas canvas, Rect arrangeRect)
         {
@@ -34,7 +68,7 @@ namespace HighestPaidFemaleAthletes
                     Stream stream = viewModel.Streams[labelText];
                     var image = PlatformImage.FromStream(stream);
                     var top = ValueToPoint(label.Position); // Assuming positions start from 0
-                    canvas.DrawImage(image, (float)arrangeRect.Left + xOffset, top - yOffset, width, height);
+                    canvas.DrawImage(image, (float)arrangeRect.Left + XOffset, top - YOffset, Width, Height);
                 }
             }
         }
