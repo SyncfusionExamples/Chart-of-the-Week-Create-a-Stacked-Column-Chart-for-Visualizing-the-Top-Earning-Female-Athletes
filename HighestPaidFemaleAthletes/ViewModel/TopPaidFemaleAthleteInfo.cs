@@ -6,6 +6,10 @@ namespace HighestPaidFemaleAthletes
 {
     public class TopPaidFemaleAthleteInfo
     {
+        public float XOffset { get; private set; }
+        public float YOffset { get; private set; }
+        public float Width { get; private set; }
+        public float Height { get; private set; }
         public ObservableCollection<FemaleAthletesModel> AthletesData { get; set; }
 
         public Dictionary<string, Stream> Streams { get; } = new Dictionary<string, Stream>();
@@ -28,8 +32,40 @@ namespace HighestPaidFemaleAthletes
             };
 
             Streams = GetImageSources();
+            SetPlatformValues();
         }
 
+        private void SetPlatformValues()
+        {
+            if (Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.Android)
+            {
+                XOffset = 85;
+                YOffset = 8;
+                Width = 15;
+                Height = 15;
+            }
+            else if (Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.WinUI)
+            {
+                XOffset = 90;
+                YOffset = 13;
+                Width = 25;
+                Height = 25;
+            }
+            else if (Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.iOS)
+            {
+                XOffset = 95;
+                YOffset = 10;
+                Width = 20;
+                Height = 20;
+            }
+            else
+            {
+                XOffset = 100;
+                YOffset = 15;
+                Width = 30;
+                Height = 30;
+            }
+        }
         private Dictionary<string, Stream> GetImageSources()
         {
             Dictionary<string, Stream> keyValues = new Dictionary<string, Stream>();
