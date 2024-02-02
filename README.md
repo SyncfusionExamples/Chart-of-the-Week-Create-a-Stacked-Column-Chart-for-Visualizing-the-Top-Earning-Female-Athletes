@@ -15,4 +15,4 @@ We can customize axis elements, including the axis title, axis label style, line
 ### Series Customization
 We can customize the series Fill. In order to show the data, we can display the data labels.
 
-For the step-by-step procedure, refer to the [Highest-Paid Female Atheles Blog](https://www.syncfusion.com/blogs/post/maui-stackedcolumn-chart-athlete.aspx).
+For the step-by-step procedure, refer to the [Highest-Paid Female Athletes Blog](https://www.syncfusion.com/blogs/post/maui-stackedcolumn-chart-athlete.aspx).
